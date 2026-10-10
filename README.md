@@ -6,9 +6,11 @@ Ferramenta CLI em Python para analisar a força de senhas.
 
 Projeto educacional desenvolvido para praticar Python e boas práticas de desenvolvimento ✅
 
-## Como usar
+## Como rodar
 
 ```bash
+git clone https://github.com/Arthurcodehub/password-strength-checker.git
+cd password-strength-checker
 python main.py
 ```
 
