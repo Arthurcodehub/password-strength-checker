@@ -1,32 +1,45 @@
 from .checker import *
 
 def exibir_resultado(resultados):
+    resultados_formatado = {
+        "maiuscula": "Maiúscula",
+        "minuscula": "Minúscula",
+        "numeros": "Números",
+        "especiais": "Especiais",
+        "comprimento": "Comprimento",
+        "comprimento_minimo": "Comprimento Mínimo",
+        "comprimento_ideal": "Comprimento Ideal",
+        "score": "Score"
+    }
     print(f"=== ANÁLISE DE FORÇA ===\n")
     print(f"Critérios:")
     for chave, valor in resultados.items():
         if isinstance(valor, bool):
             emoji = "✅" if valor else "❌"
-            print(f"{chave}: {emoji}")
+            print(f"    {emoji} {resultados_formatado[chave]}")
+    
     print(f"Comprimento:")
     comprimento = resultados["comprimento"]
-    print(f"Sua senha: {comprimento}")
-    print(f"Minimo: 8")
-    print(f"Ideal: 12")
+    print(f"    Sua senha: {comprimento}")
+    print(f"    Minimo: 8")
+    print(f"    Ideal: 12\n")
 
     print(f"=== Score Final ===\n")
     
     score = resultados["score"]
     if score <= 2:
-        print(f"Score: {score}/6 - FRACA 🔴")
+        print(f"Score: {score}/6 - FRACA 🔴\n")
     elif score <= 4:
-        print(f"Score: {score}/6 - MÉDIA 🟡")
+        print(f"Score: {score}/6 - MÉDIA 🟡\n")
     else:
-        print(f"Score: {score}/6 - FORTE 🟢")
+        print(f"Score: {score}/6 - FORTE 🟢\n")
 
-    print("=====================================")
+    print("===================\n")
 
 def menu_principal():
+    print("=== VERIFICADOR DE SENHAS ===")
     while True:
+        
         senha = input("Digite sua Senha: ")
         resultado = verificar_forca(senha)
         exibir_resultado(resultado)
