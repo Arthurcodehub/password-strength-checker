@@ -1,5 +1,5 @@
 from .checker import verificar_forca
-
+EXCECOES = (KeyboardInterrupt, EOFError)
 def exibir_resultado(resultados):
     resultados_formatado = {
         "maiuscula": "Maiúscula",
@@ -39,14 +39,18 @@ def exibir_resultado(resultados):
 def menu_principal():
     print("=== VERIFICADOR DE SENHAS ===")
     while True:
-        
-        senha = input("Digite sua Senha: ")
-        resultado = verificar_forca(senha)
-        exibir_resultado(resultado)
-        r = input("Deseja testar outra? (S/N)").lower()
-        while r not in ("s", "n"):
-            print("Resposta Inválida!")
-            r = input("Deseja testar outra? (S/N)").lower()
+        try:
+            senha = input("Digite sua Senha: ")
+            resultado = verificar_forca(senha)
+            exibir_resultado(resultado)
+            r = input("Deseja testar outra? (S/N) ").lower()
+            while r not in ("s", "n"):
+                print("Resposta Inválida!")
+                r = input("Deseja testar outra? (S/N) ").lower()
 
-        if r == "n":
+            if r == "n":
+                print("\nSaindo...")
+                break
+        except EXCECOES:
+            print("\nSaindo...")
             break
