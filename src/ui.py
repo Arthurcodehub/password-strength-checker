@@ -1,4 +1,4 @@
-from .checker import *
+from .checker import verificar_forca
 
 def exibir_resultado(resultados):
     resultados_formatado = {
@@ -21,7 +21,7 @@ def exibir_resultado(resultados):
     print(f"Comprimento:")
     comprimento = resultados["comprimento"]
     print(f"    Sua senha: {comprimento}")
-    print(f"    Minimo: 8")
+    print(f"    Mínimo: 8")
     print(f"    Ideal: 12\n")
 
     print(f"=== Score Final ===\n")
@@ -44,9 +44,9 @@ def menu_principal():
         resultado = verificar_forca(senha)
         exibir_resultado(resultado)
         r = input("Deseja testar outra? (S/N)").lower()
-        if r == "s":
-            continue
-        elif r == "n":
+        while r not in ("s", "n"):
+            print("Resposta Inválida!")
+            r = input("Deseja testar outra? (S/N)").lower()
+
+        if r == "n":
             break
-        else:
-            print("Resposta Invalida!")
